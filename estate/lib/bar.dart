@@ -1,15 +1,21 @@
+// ignore_for_file: prefer_typing_uninitialized_variables
+
 import 'package:flutter/material.dart';
 
-// ignore: camel_case_types
+// ignore: camel_case_types, must_be_immutable
 class bar extends StatelessWidget {
-  const bar({Key? key}) : super(key: key);
+  var size, height, width;
+  bar({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    size = MediaQuery.of(context).size;
+    height = size.height;
+    width = size.width;
     return Column(
       children: [
         Expanded(
-            flex: 2,
+            flex: 3,
             child: Container(
               color: const Color.fromRGBO(116, 121, 250, 1),
               child: Row(
@@ -23,7 +29,7 @@ class bar extends StatelessWidget {
                             icon: const Icon(
                               Icons.location_on,
                               color: Colors.white,
-                              size: 24.0,
+                              size: 30.0,
                             ),
                             label: const Text('Bangelore'),
                             onPressed: () {},
@@ -38,8 +44,35 @@ class bar extends StatelessWidget {
                       ),
                       Row(
                         children: [
-                          Column(
-                            children: const [],
+                          Padding(
+                            padding: const EdgeInsets.only(left: 20),
+                            child: Column(
+                              children: const [
+                                Text(
+                                  'Find Residencies',
+                                  style: TextStyle(
+                                    color: Colors.white,
+                                    fontSize: 20,
+                                  ),
+                                ),
+                              ],
+                            ),
+                          )
+                        ],
+                      ),
+                      Row(
+                        children: [
+                          Padding(
+                            padding: const EdgeInsets.only(left: 20),
+                            child: Column(
+                              children: const [
+                                Card(
+                                  color: Colors.white,
+                                  shadowColor: Colors.black,
+                                  child: Icon(Icons.search),
+                                )
+                              ],
+                            ),
                           )
                         ],
                       )
@@ -49,7 +82,7 @@ class bar extends StatelessWidget {
               ),
             )),
         Expanded(
-            flex: 5,
+            flex: 6,
             child: Container(
               color: Colors.white,
             )),
